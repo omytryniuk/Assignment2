@@ -1,9 +1,12 @@
 package com.example.yugenshtil.torontoparkguide;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Intro extends AppCompatActivity {
 
@@ -19,6 +22,25 @@ public class Intro extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_intro, menu);
         return true;
     }
+
+    // The method runs when the user click on the picture and choose "To show all parks". The method calls ShowAll activity
+    public void ShowAllParks(View v) {
+        Intent intent = new Intent(Intro.this, ShowAll.class);
+        startActivityForResult(intent, 0);
+
+
+    }
+
+
+    // The method runs when the user click on the picture and choose "Search". The method calls Search activity
+    public void StartSearch(View v) {
+        Intent intent = new Intent(Intro.this, Search.class);
+        startActivityForResult(intent, 0);
+
+
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -20,15 +20,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "POSTALCODE";
     public static final String COL_5 = "FACILITIES";
 
-
+    // Call the creation of the database
+    // REFERENCE http://www.vogella.com/tutorials/AndroidSQLite/article.html
     public DatabaseHelper(Context context) {
         //DATABASE WILL BE CREATED
         super(context, DATABASE_NAME, null, 1);
         Log.d("Ole", "Table Constructor");
-        // instatnce of sqllite db
+        // instance of sqllite db
 
     }
 
+    // The method checks database whether it exists
     public boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         boolean check = true;
@@ -44,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // Create database
     @Override
     public void onCreate(SQLiteDatabase db) {
         //execute query we have passed
@@ -52,6 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+    // update database: but it is not used in the application
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d("Ole", "Table Drop");
@@ -60,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // The method receive the data from XML PullParser and insert it into the table
     public boolean insertData(String name, String loc, String code, String facilities) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -76,6 +82,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+    // Cursor retrieve all information from the database
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);

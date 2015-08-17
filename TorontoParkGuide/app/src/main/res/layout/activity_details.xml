@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin"
+tools:context="com.example.yugenshtil.torontoparkguide.Details"
+android:id="@+id/rl"
+    style="@style/AppTheme"
+    android:background="#6380ff">
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/nr"
+    android:text="NAME IS"
+        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/tlof"
+        android:layout_alignStart="@+id/tlof" />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="LOC IS"
+    android:id="@+id/lr"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/nr"
+        android:layout_alignLeft="@+id/nr"
+        android:layout_alignStart="@+id/nr" />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="PO"
+    android:id="@+id/pr"
+        android:layout_above="@+id/tlof"
+        android:layout_alignLeft="@+id/tlof"
+        android:layout_alignStart="@+id/tlof" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="THE LIST OF FACILITIES"
+    android:id="@+id/tlof"
+    android:layout_below="@+id/imageView4"
+    android:layout_centerHorizontal="true" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text "
+    android:id="@+id/f1"
+    android:layout_below="@+id/tlof"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+    <FrameLayout
+    android:id="@+id/map"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView4"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/f1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+</FrameLayout>
+
+    <ImageView
+        android:layout_width="28dp"
+        android:layout_height="25dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="left|top"
+        android:src="@drawable/house"
+        android:layout_alignBottom="@+id/lr"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView3"
+        android:layout_gravity="left|top"
+        android:src="@drawable/tree"
+        android:layout_above="@+id/lr"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:id="@+id/imageView4"
+        android:layout_gravity="left|top"
+        android:src="@drawable/pc"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignRight="@+id/imageView2"
+        android:layout_alignEnd="@+id/imageView2" />
+
+
+</RelativeLayout>

@@ -1,3 +1,4 @@
+
 package com.example.yugenshtil.torontoparkguide;
 
 import android.content.Context;
@@ -32,6 +33,13 @@ import java.net.URLConnection;
 import java.util.HashSet;
 import java.util.Set;
 
+ /* THE CLASS STARTS ACTIVITY WHICH:
+  * 1. Check whether database exists
+  * 2. If the database exists - run the program
+  * 3. If database does not exist - check the connection to the Internet and create the database using
+  *    XMLPULLParser
+   *
+   * */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -43,30 +51,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /*Check whether database is created and if created - run the application;
+         otherwise - connect to the Internet and create a table if the Internet is available*/
         if(checkDataBase()){
-            Toast.makeText(MainActivity.this, "Application is loading ...", Toast.LENGTH_LONG).show();
+           // Toast.makeText(MainActivity.this, "Application is loading ...", Toast.LENGTH_LONG).show();
             TextView t = (TextView)findViewById(R.id.info);
             Intent intent = new Intent(MainActivity.this, Intro.class);
             startActivityForResult(intent, 0);
           //  t.setText("Application is loading ...");
         }
 
+        // The method checks whether the Internet is available during the creation of the table
         else {
             if (isOnline()) {
-                //Toast.makeText(MainActivity.this, "Create database", Toast.LENGTH_SHORT).show();
-                //     DatabaseHelper myDb;
-                //     SQLiteDatabase db;
-                new AccessWebServiceTask().execute();
-
-                //Intent intent = new Intent(this, oo.class);
-                //startActivityForResult(intent, 0);
+                TextView t = (TextView)findViewById(R.id.info);
+               // Toast.makeText(MainActivity.this, "Creating database....Please wait", Toast.LENGTH_LONG).show();
+                t.setText("Creating database....Please wait");
+               new AccessWebServiceTask().execute();
             }
 
             else {
 
-           //     Toast.makeText(MainActivity.this, "The Internet is required for the first launch. Please, turn on the Internet and restart the application", Toast.LENGTH_LONG).show();
+               Toast.makeText(MainActivity.this, "The Internet is required for the first launch. Please, turn on the Internet and restart the application", Toast.LENGTH_LONG).show();
                 TextView t = (TextView)findViewById(R.id.info);
-                t.setText("The Internet is required for the first launch. Please, turn on the Internet and restart the application");
+            //    t.setText("The Internet is required for the first launch. Please, turn on the Internet and restart the application");
                 // Intent intent = new Intent(Settings.ACTION_SETTINGS);
                 // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //  SystemClock.sleep(5000);
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    // The method parses XML file received from the Internet and sends the information to create a table
     private String getXMLData (String s) throws XmlPullParserException {
         String tagName = " ";
         String LocationName = " ";
@@ -94,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
         InputStream in = null;
         String strDefinition = "O";
         try {
-            //  in = OpenHttpConnection("http://zenit.senecac.on.ca:15108/android/parks.xml");
+
+            //Open the internet source
             in = OpenHttpConnection("http://www1.toronto.ca/City_Of_Toronto/Information_Technology/Open_Data/Data_Sets/Assets/Files/locations-20110725.xml");
 
 
@@ -203,28 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // The method checks whether database was created
     private boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         String DB_FULL_PATH = "/data/data/com.example.yugenshtil.torontoparkguide/databases/Parks.db";
@@ -239,23 +228,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-/*
-    private boolean isNetworkConnected() {
-        NetworkInfo ni = null;
-        try {
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            ni = cm.getActiveNetworkInfo();
 
-        } catch (Exception e) {
-            Toast.makeText(Intro.this, "pLEASE CONNECT TO THE INTERNET AND RESTART APP", Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-        return true;
-
-    }
-
-*/
+    // The method check the connection to the Internet
+     // REFERENCE: http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-timeouts
     public boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -264,6 +239,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    // the method runs thread in background when the data from the internet is copied to the database
+     // REFERENCE: http://zenit.senecac.on.ca/wiki/index.php/MAP524/DPS924_Lab_7
     private class AccessWebServiceTask extends
             AsyncTask<String,Void,String> {
         String res=" ";
@@ -278,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
             return res;
         }
 
+        // the method call another activity which displays menu
         protected void onPostExecute(String result) {
             // TextView tv = (TextView) findViewById(R.id.word);
             //tv.setText(result);
@@ -287,20 +266,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // The method establishes the connection to the Internet
+     // REFERENCE: http://zenit.senecac.on.ca/wiki/index.php/MAP524/DPS924_Lab_7
     private InputStream OpenHttpConnection(String urlString)
             throws IOException {
         InputStream in = null;
@@ -326,12 +293,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return in;
     }
-
-
-
-
-
-
-
-
 }

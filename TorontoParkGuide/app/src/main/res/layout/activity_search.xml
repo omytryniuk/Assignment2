@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.yugenshtil.torontoparkguide.Search"
+    android:background="#6380ff">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="186dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sport Field"
+            android:id="@+id/cb1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playground"
+            android:id="@+id/cb2"
+            android:checked="false"
+            android:layout_above="@+id/cb7"
+            android:layout_toRightOf="@+id/cb1"
+            android:layout_toEndOf="@+id/cb1" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Firepit"
+            android:id="@+id/cb"
+            android:checked="false"
+            android:layout_below="@+id/cb6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pool"
+            android:id="@+id/cb4"
+            android:checked="false"
+            android:layout_above="@+id/cb7"
+            android:layout_toRightOf="@+id/cb7"
+            android:layout_toEndOf="@+id/cb7" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gym"
+            android:id="@+id/cb5"
+            android:checked="false"
+            android:layout_below="@+id/cb7"
+            android:layout_toRightOf="@+id/cb7"
+            android:layout_toEndOf="@+id/cb7" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kitchen"
+            android:id="@+id/cb6"
+            android:checked="false"
+            android:layout_below="@+id/cb1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leash-Free Area"
+            android:id="@+id/cb7"
+            android:checked="false"
+            android:layout_alignTop="@+id/cb6"
+            android:layout_toRightOf="@+id/cb1"
+            android:layout_toEndOf="@+id/cb1" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diamond"
+            android:id="@+id/cb8"
+            android:checked="false"
+            android:layout_below="@+id/cb5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fitness"
+            android:id="@+id/cb9"
+            android:checked="false"
+            android:layout_below="@+id/cb5"
+            android:layout_alignLeft="@+id/cb5"
+            android:layout_alignStart="@+id/cb5" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Club House"
+            android:id="@+id/cb10"
+            android:checked="false"
+            android:layout_above="@+id/cb8"
+            android:layout_alignRight="@+id/cb12"
+            android:layout_alignEnd="@+id/cb12" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEARCH"
+            android:id="@+id/sb"
+            android:onClick="receiveSearch"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room"
+            android:id="@+id/room"
+            android:checked="false"
+            android:layout_above="@+id/cb10"
+            android:layout_toRightOf="@+id/cb7"
+            android:layout_toEndOf="@+id/cb7" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Splash Pad"
+            android:id="@+id/cb12"
+            android:checked="false"
+            android:layout_below="@+id/cb10"
+            android:layout_alignLeft="@+id/cb7"
+            android:layout_alignStart="@+id/cb7" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skate rink"
+            android:id="@+id/cb14"
+            android:checked="false"
+            android:layout_below="@+id/cb8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relativeLayout" />
+</RelativeLayout>
